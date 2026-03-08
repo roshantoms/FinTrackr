@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinTrackr · modern expense flow</title>
+  <link rel="icon" href="img/icon.png" type="image/png"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Font Awesome 6 (free icons) - kept for icons only -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+  <div class="dashboard">
+    <!-- header minimal -->
+    <div class="header-modern">
+      <div class="logo-modern">
+        <img src="img/logo.png" alt="FinTrackr Logo" class="logo-img">
+      </div>
+      <div class="theme-switch">
+        <button id="btnLightModern" class="active-theme"><i class="fas fa-sun"></i></button>
+        <button id="btnDarkModern"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+
+    <!-- add form -->
+    <div class="add-card">
+      <div class="section-title"><i class="fas fa-circle-plus"></i> record new</div>
+      <form id="formModern">
+        <div class="form-grid">
+          <div class="field">
+            <label>date</label>
+            <input type="date" id="dateModern" required>
+          </div>
+          <div class="field">
+            <label>description</label>
+            <input type="text" id="descModern" placeholder="groceries, uber..." required>
+          </div>
+          <div class="field">
+            <label>category</label>
+            <select id="catModern" required>
+              <option value="" disabled selected>– select –</option>
+              <option value="Food">🍔 Food</option>
+              <option value="Travel">🚗 Travel</option>
+              <option value="Rent">🏠 Rent</option>
+              <option value="Essential">🧴 Essential</option>
+              <option value="Clothes">👕 Clothes</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>amount ($)</label>
+            <input type="number" id="amountModern" step="0.01" min="0.01" placeholder="0.00" required>
+          </div>
+          <button type="submit" class="btn-primary"><i class="fas fa-cloud-upload-alt"></i> add</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- stats cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-coins"></i></div>
+        <div class="stat-content">
+          <span class="stat-label">total</span>
+          <span class="stat-number" id="totalModern">$0.00</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #f97316;"><i class="fas fa-drumstick-bite"></i></div>
+        <div class="stat-content">
+          <span class="stat-label">food</span>
+          <span class="stat-number" id="foodModern">$0.00</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #06b6d4;"><i class="fas fa-car"></i></div>
+        <div class="stat-content">
+          <span class="stat-label">travel</span>
+          <span class="stat-number" id="travelModern">$0.00</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #8b5cf6;"><i class="fas fa-house"></i></div>
+        <div class="stat-content">
+          <span class="stat-label">rent</span>
+          <span class="stat-number" id="rentModern">$0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- category pills -->
+    <div class="category-pills">
+      <div class="pill"><span class="pill-name">🧴 essential</span><span class="pill-value" id="essentialModern">$0.00</span></div>
+      <div class="pill"><span class="pill-name">👕 clothes</span><span class="pill-value" id="clothesModern">$0.00</span></div>
+      <div class="pill"><span class="pill-name">🍔 food</span><span class="pill-value" id="foodMiniModern">$0.00</span></div>
+      <div class="pill"><span class="pill-name">🚗 travel</span><span class="pill-value" id="travelMiniModern">$0.00</span></div>
+      <div class="pill"><span class="pill-name">🏠 rent</span><span class="pill-value" id="rentMiniModern">$0.00</span></div>
+    </div>
+
+    <!-- chart -->
+    <div class="chart-panel">
+      <h3><i class="fas fa-chart-bar"></i> monthly overview</h3>
+      <div class="chart-container">
+        <canvas id="chartModern"></canvas>
+      </div>
+    </div>
+
+    <!-- transaction list -->
+    <div class="list-panel">
+      <div class="list-header"><i class="fas fa-list-ul"></i> recent transactions</div>
+      <div id="streamModern" class="expense-stream"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
