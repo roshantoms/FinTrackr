@@ -226,3 +226,8 @@
     
     window.addEventListener('resize', () => chart && chart.resize());
 })();
+
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
