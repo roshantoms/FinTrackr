@@ -63,10 +63,10 @@
         sorted.forEach(ex => {
             html += `<div class="expense-row" data-id="${ex.id}">
                 <div class="row-detail">
-                    <span class="date-badge"><i class="far fa-calendar-alt"></i> ${ex.date}</span>
+                    <span class="date-badge"><i class="far fa-calendar-alt"></i> ${escape(ex.date)}</span>
                     <span class="desc-text"><i class="fas fa-pencil-alt"></i> ${escape(ex.description)}</span>
-                    <span class="cat-pill"><i class="fas fa-tag"></i> ${ex.category}</span>
-                    <span class="amount-text">$${ex.amount.toFixed(2)}</span>
+                    <span class="cat-pill"><i class="fas fa-tag"></i> ${escape(ex.category)}</span>
+                    <span class="amount-text">₹${ex.amount.toFixed(2)}</span>
                 </div>
                 <button class="delete-modern" data-id="${ex.id}"><i class="fas fa-trash-can"></i> delete</button>
             </div>`;
@@ -94,17 +94,17 @@
         });
         
         // Update all total displays with proper formatting
-        totalSpan.textContent = `$${total.toFixed(2)}`;
-        foodSpan.textContent = `$${sums.Food.toFixed(2)}`;
-        travelSpan.textContent = `$${sums.Travel.toFixed(2)}`;
-        rentSpan.textContent = `$${sums.Rent.toFixed(2)}`;
-        essentialSpan.textContent = `$${sums.Essential.toFixed(2)}`;
-        clothesSpan.textContent = `$${sums.Clothes.toFixed(2)}`;
+        totalSpan.textContent = `₹${total.toFixed(2)}`;
+        foodSpan.textContent = `₹${sums.Food.toFixed(2)}`;
+        travelSpan.textContent = `₹${sums.Travel.toFixed(2)}`;
+        rentSpan.textContent = `₹${sums.Rent.toFixed(2)}`;
+        essentialSpan.textContent = `₹${sums.Essential.toFixed(2)}`;
+        clothesSpan.textContent = `₹${sums.Clothes.toFixed(2)}`;
         
         // Update mini badges
-        if (foodMini) foodMini.textContent = `$${sums.Food.toFixed(2)}`;
-        if (travelMini) travelMini.textContent = `$${sums.Travel.toFixed(2)}`;
-        if (rentMini) rentMini.textContent = `$${sums.Rent.toFixed(2)}`;
+        if (foodMini) foodMini.textContent = `₹${sums.Food.toFixed(2)}`;
+        if (travelMini) travelMini.textContent = `₹${sums.Travel.toFixed(2)}`;
+        if (rentMini) rentMini.textContent = `₹${sums.Rent.toFixed(2)}`;
     }
 
     function updateChart() {
@@ -129,7 +129,7 @@
                 data: {
                     labels: ['Food', 'Travel', 'Rent', 'Essential', 'Clothes'],
                     datasets: [{
-                        label: 'spent ($)',
+                        label: 'spent (₹)',
                         data: data,
                         backgroundColor: ['#f97316','#06b6d4','#8b5cf6','#10b981','#ec4899'],
                         borderRadius: 8,
